@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-import BookRecords.views
+from BookRecords.views import *
 app_name = '[BookRecords]'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^$', BookRecords.views.BookRecordsHomePage),
+    re_path(r'^$', BookRecordsHomePage, name='BookRecordsHomePage'),
+    re_path(r'^AuthorCreatePage/', AuthorCreatePage, name='AuthorCreatePage'),
+    re_path(r'^AuthorCreate/', AuthorCreate, name='AuthorCreate'),
+    re_path(r'^AuthorDelete/', AuthorDelete, name='AuthorDelete'),
+    re_path(r'^AuthorEditPage/', AuthorEditPage, name='AuthorEditPage'),
+    re_path(r'^AuthorEdit/', AuthorEdit, name='AuthorEdit'),
+
     path('MM/', include('MM.urls', namespace='MM')),
 ]
